@@ -73,7 +73,9 @@ return {
             'config.h.in',
             'meson.build',
             'meson_options.txt',
-            'build.ninja'
+            'build.ninja',
+            '.clangd',
+            '.clang-format'
           )(fname) or require('lspconfig.util').root_pattern('compile_commands.json', 'compile_flags.txt')(fname) or require('lspconfig.util').find_git_ancestor(
             fname
           )
