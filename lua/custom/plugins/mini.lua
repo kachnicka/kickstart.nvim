@@ -18,5 +18,21 @@ return {
     statusline.section_location = function()
       return '%2l:%-2v'
     end
+
+    local og_section_fileinfo = statusline.section_fileinfo
+    ---@diagnostic disable-next-line: duplicate-set-field
+    statusline.section_fileinfo = function(args)
+      local cmake_status = function()
+        local cmake = require 'cmake-tools'
+
+        if not cmake.is_cmake_project() then
+          return ''
+        end
+
+        return string.format('⚙ %s [%s]   ', cmake.get_launch_target(), cmake.get_build_type())
+      end
+
+      return cmake_status() .. og_section_fileinfo(args)
+    end
   end,
 }
