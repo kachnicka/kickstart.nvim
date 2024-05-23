@@ -1,4 +1,11 @@
 require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        ['<C-e>'] = 'move_selection_previous',
+      },
+    },
+  },
   extensions = {
     ['ui-select'] = {
       require('telescope.themes').get_dropdown(),
