@@ -87,7 +87,7 @@ return {
           'clangd',
           '--background-index',
           '--clang-tidy',
-          '--header-insertion=iwyu',
+          '--header-insertion=never',
           '--completion-style=detailed',
           '--function-arg-placeholders',
           '--fallback-style=llvm',
@@ -97,6 +97,17 @@ return {
           completeUnimported = true,
           clangdFileStatus = true,
         },
+      },
+      glsl_analyzer = {
+        cmd = { 'glsl_analyzer' },
+        filetypes = { 'glsl', 'vert', 'tesc', 'tese', 'frag', 'geom', 'comp', 'rgen', 'rint', 'rahit', 'rchit', 'rmiss', 'rcall', 'mesh', 'task' },
+        single_file_support = { true },
+      },
+      slang = {
+        filetypes = { 'hlsl', 'shaderslang', 'slang' },
+        root_dir = function(fname)
+          return require('lspconfig.util').root_pattern '.clang-format'(fname)
+        end,
       },
       pyright = {},
       lua_ls = {
@@ -135,5 +146,6 @@ return {
         end,
       },
     }
+    require('lspconfig').slangd.setup(servers['slang'])
   end,
 }
