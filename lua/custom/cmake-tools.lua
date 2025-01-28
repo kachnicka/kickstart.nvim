@@ -12,4 +12,4 @@ vim.keymap.set('n', '<leader>cb', '<cmd>CMakeBuild<CR>', { desc = '[C]Make [B]ui
 vim.keymap.set('n', '<leader>cB', '<cmd>CMakeBuild!<CR>', { desc = '[C]Make Clean [B]uild' })
 
 vim.keymap.set('n', '<leader>cs', '<cmd>CMakeStopExecutor<CR>', { desc = '[C]Make [S]top executor' })
-vim.keymap.set('n', '<leader>co', '<cmd>CMakeStopExecutor<CR>', { desc = '[C]Make [O]pen executor' })
+vim.keymap.set('n', '<leader>co', '<cmd>CMakeOpenExecutor<CR>', { desc = '[C]Make [O]pen executor' })
